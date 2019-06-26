@@ -7,9 +7,10 @@ Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + Rea
 - [x] index.js
 - [x] GlobalStyles, Theme
 - [x] Footer
-- [ ] Header
-- [ ] Routes
-- [ ] Header, SearchBar, Text
+- [x] Header
+- [x] Routes
+- [x] Header, SearchBar
+- [ ] Search Container, Presenter
 - [ ] Excel File Upload
 - [ ] Allow by Supervisor
 - [ ] Allow by Supervisor of Supervisor
