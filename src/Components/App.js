@@ -8,8 +8,7 @@ import { HashRouter as Router } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
 import styled from "styled-components";
 import Footer from "./Footer";
-import SearchPost from "../Routes/SearchPost";
-import Auth from "../Routes/Auth";
+
 import Header from "./Header";
 import SearchResult from "../Routes/SearchResult";
 
@@ -26,10 +25,6 @@ const Wrapper = styled.div`
 `;
 
 export default () => {
-  const {
-    data: { isLoggedIn }
-  } = useQuery(QUERY);
-
   return (
     <ThemeProvider theme={Theme}>
       <>
@@ -40,7 +35,6 @@ export default () => {
             <Routes>
               <SearchResult />
             </Routes>
-
             <Footer />
           </Wrapper>
         </Router>
