@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import FatText from "../Components/FatText";
 
 const Wrapper = styled.div`
   min-height: calc(80vh - 50px);
@@ -21,7 +22,9 @@ const Box = styled.div`
 export default () => {
   return (
     <Wrapper>
-      <Box />
+      <Box>
+        <FatText>포상록입니다</FatText>
+      </Box>
     </Wrapper>
   );
 };

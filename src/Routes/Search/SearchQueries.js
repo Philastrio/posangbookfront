@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
-export const SEARCHALL = gql`
-  query searchAll($term: String!) {
+export const SEARCH = gql`
+  query search($term: String!) {
     searchPost(term: $term) {
       prizeNum
       winnerName
@@ -16,15 +16,6 @@ export const SEARCHALL = gql`
     searchUser(term: $term) {
       userName
       belongTo
-    }
-  }
-`;
-
-export const SEARCHNORMAL = gql`
-  query searchNormal($term: String!) = {
-    searchPost(term: $term) {
-      winnerName
-      birth
     }
   }
 `;

@@ -3,21 +3,29 @@ import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
-import PropTypes from "prop-types";
 
 const Header = styled.header`
   width: 100%;
-  max-width: 935px;
   border: 0px;
+  max-width: 935px;
   background-color: white;
   border-bottom: ${props => props.theme.boxBorder};
   border-radius: 0px;
   margin-bottom: 60px;
+  margin: 0 auto; /* 이걸 넣어야 가운데에 있게 된다*/
+
   display: flex;
-  justify-content: space-around;
+  justify-items: center;
   align-items: center;
   padding: 25px 0px;
   z-index: 2;
+`;
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  max-width: ${props => props.theme.maxWidth};
+  display: flex;
+  justify-content: center;
 `;
 
 const HeaderColumn = styled.div`
@@ -31,13 +39,6 @@ const HeaderColumn = styled.div`
     margin-left: auto;
     text-align: right;
   }
-`;
-
-const HeaderWrapper = styled.div`
-  width: 100%;
-  max-width: ${props => props.theme.maxWidth};
-  display: flex;
-  justify-content: center;
 `;
 
 const HeaderLink = styled(Link)`
@@ -74,18 +75,21 @@ export default withRouter(({ history }) => {
   const onSearchSubmit = e => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`);
-    console.log(history);
   };
 
   return (
     <Header>
       <HeaderWrapper>
         <HeaderColumn>
-          <Link to="/">청양군청 포상록</Link>
+          <Link to="/">청양군 포상록</Link>
         </HeaderColumn>
         <HeaderColumn>
           <form onSubmit={onSearchSubmit}>
-            <SearchInput {...search} placeholder="검 색" />
+            <SearchInput
+              value={search.value}
+              onChange={search.onChange}
+              placeholder="검 색"
+            />
           </form>
         </HeaderColumn>
         <HeaderColumn>

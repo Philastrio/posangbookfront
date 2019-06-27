@@ -8,9 +8,7 @@ import { HashRouter as Router } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
 import styled from "styled-components";
 import Footer from "./Footer";
-
 import Header from "./Header";
-import SearchResult from "../Routes/SearchResult";
 
 const QUERY = gql`
   {
@@ -30,13 +28,13 @@ export default () => {
       <>
         <GlobalStyles />
         <Router>
-          <Wrapper>
+          <>
             <Header />
-            <Routes>
-              <SearchResult />
-            </Routes>
-            <Footer />
-          </Wrapper>
+            <Wrapper>
+              <Routes />
+              <Footer />
+            </Wrapper>
+          </>
         </Router>
       </>
     </ThemeProvider>

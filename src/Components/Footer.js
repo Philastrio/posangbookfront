@@ -34,7 +34,7 @@ export default () => (
     <List>
       <ListItem>
         <Link href="http://www.cheongyang.go.kr/kor.do" target="_blank">
-          청양군청
+          청양군
         </Link>
       </ListItem>
       <ListItem>
