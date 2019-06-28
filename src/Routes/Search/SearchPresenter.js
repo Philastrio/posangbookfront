@@ -27,7 +27,8 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
   if (searchTerm === undefined) {
     return (
       <Wrapper>
-        <FatText text="검색어를 입력해주세요" />
+        undefined
+        {/* <FatText text="검색어를 입력해주세요" /> */}
       </Wrapper>
     );
   } else if (loading === true) {
@@ -39,13 +40,7 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
   } else if (data && data.searchPost) {
     return (
       <Wrapper>
-        <Section>
-          {data.searchPost.length === 0 ? (
-            <FatText text="검색된 사람이 없습니다" />
-          ) : (
-            <FatText text="검색된 사람이 있습니다" />
-          )}
-        </Section>
+        <Section>Hi</Section>
       </Wrapper>
     );
   }
