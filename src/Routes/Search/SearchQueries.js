@@ -13,9 +13,5 @@ export const SEARCH = gql`
       contribution
       belongTo
     }
-    searchUser(term: $term) {
-      userName
-      belongTo
-    }
   }
 `;

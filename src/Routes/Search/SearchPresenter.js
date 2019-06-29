@@ -3,52 +3,106 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import FatText from "../../Components/FatText";
 import Loader from "../../Components/Loader";
+import { Table, Divider, Tag } from "antd";
+
+const { Column } = Table;
 
 const Wrapper = styled.div`
   height: 50vh;
 `;
 
-const Section = styled.div`
-  margin-bottom: 50px;
-  display: grid;
-  grid-gap: 25px;
-  grid-template-columns: repeat(4, 160px);
-  grid-template-rows: 160px;
-  grid-auto-rows: 160px;
-`;
-
-const PostSection = styled(Section)`
-  grid-template-columns: repeat(4, 200px);
-  grid-template-rows: 200px;
-  grid-auto-rows: 200px;
-`;
-
-const SearchPresenter = ({ searchTerm, loading, data }) => {
-  if (searchTerm === undefined) {
+const SearchPresenter = ({ term, loading, data }) => {
+  if (!term) {
     return (
       <Wrapper>
-        undefined
-        {/* <FatText text="검색어를 입력해주세요" /> */}
+        <FatText text="Search for something" />
       </Wrapper>
     );
-  } else if (loading === true) {
+  }
+  if (loading) {
     return (
       <Wrapper>
         <Loader />
       </Wrapper>
     );
-  } else if (data && data.searchPost) {
+  }
+  if (data && data.searchPost) {
+    const dataSource = [data];
+    console.log(dataSource);
+    const columns = [
+      {
+        title: "상장번호",
+        dataIndex: "prizeNum",
+        key: "prizeNum"
+      },
+      {
+        title: "수상자",
+        dataIndex: "winnerName",
+        key: "winnerName"
+      },
+      {
+        title: "생년월일",
+        dataIndex: "birth",
+        key: "birth"
+      },
+      {
+        title: "주소",
+        dataIndex: "address",
+        key: "address"
+      },
+      {
+        title: "공적유형",
+        dataIndex: "prizeCategory",
+        key: "prizeCategory"
+      },
+      {
+        title: "공적",
+        dataIndex: "contribution",
+        key: "contribution"
+      },
+
+      {
+        title: "실과",
+        dataIndex: "belongTo",
+        key: "belongTo"
+      },
+      {
+        title: "수상일",
+        dataIndex: "prizeDate",
+        key: "prizeDate"
+      },
+      {
+        title: "훈격",
+        dataIndex: "prizeRank",
+        key: "prizeRank"
+      }
+    ];
     return (
       <Wrapper>
-        <Section>Hi</Section>
+        <Table dataSource={dataSource} columns={columns} />
       </Wrapper>
     );
   }
 };
 
 SearchPresenter.propTypes = {
-  searchTerm: PropTypes.string,
-  loading: PropTypes.bool
+  term: PropTypes.string,
+  data: PropTypes.shape({
+    searchPost: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        prizeNum: PropTypes.string,
+        winnerName: PropTypes.string,
+        birth: PropTypes.string,
+        address: PropTypes.string,
+        prizeCategory: PropTypes.string,
+        prizeRank: PropTypes.string,
+        prizeDate: PropTypes.string,
+        contribution: PropTypes.string,
+        belongTo: PropTypes.string
+      })
+    )
+  })
 };
 
 export default SearchPresenter;
