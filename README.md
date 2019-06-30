@@ -35,4 +35,5 @@ Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + Rea
 
 ## Idea
 
+- [ ] prizeCategory: 앞으로는 여기에 행사 이름을 적도록 한다. // 추후
 - [ ] 포상번호: 프론트에서 바로 직전 포상번호 value를 가져와서 +1을 해주고 백엔드로 보내준다.

@@ -4,7 +4,7 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 
 const Wrapper = styled.div`
-  min-height: calc(80vh - 50px);
+  min-height: ${props => props.theme.minHeight};
   display: flex;
   align-items: center;
   justify-content: center;

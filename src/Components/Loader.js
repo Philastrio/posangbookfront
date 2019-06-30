@@ -15,9 +15,13 @@ const Animation = keyframes`
 `;
 
 const Loader = styled.div`
+  min-height: ${props => props.theme.minHeight};
   animation: ${Animation} 1s linear infinite;
+
   width: 100%;
-  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
 `;
 
 export default () => (

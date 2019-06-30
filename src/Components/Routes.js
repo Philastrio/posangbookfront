@@ -19,7 +19,7 @@ const LoggedInRoutes = () => (
 
 const LoggedOutRoutes = () => (
   <Switch>
-    <Route exact path="/" component={SearchResult} />
+    <Route exact path="/" component={Auth} />
     <Route path="/Auth" component={Auth} />
     <Route path="/search" component={Search} />
   </Switch>

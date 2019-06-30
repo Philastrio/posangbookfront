@@ -12,6 +12,7 @@ export const SEARCH = gql`
       prizeDate
       contribution
       belongTo
+      eventName
     }
   }
 `;
