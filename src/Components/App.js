@@ -19,19 +19,24 @@ const QUERY = gql`
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: ${props => props.theme.maxWidth};
+  height: ${props => props.theme.authMinHeight};
   width: 100%;
 `;
 
 export default () => {
+  const {
+    data: { isLoggedIn }
+  } = useQuery(QUERY);
+
   return (
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
         <Router>
           <>
-            <Header />
+            {isLoggedIn && <Header />}
             <Wrapper>
-              <Routes />
+              <Routes isLoggedIn={isLoggedIn} />
               <Footer />
             </Wrapper>
           </>

@@ -10,12 +10,11 @@ Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + Rea
 - [x] Header
 - [x] Routes
 - [x] Header, SearchBar
-- [ ] Search Container, Presenter
+- [x] Search Container, Presenter
+- [x] Search by Name
 - [ ] Excel File Upload
 - [ ] Allow by Supervisor
 - [ ] Allow by Supervisor of Supervisor
-- [ ] Search by Name (Supervisor / Regular Expression(Korean))
-- [ ] Search by Name (Normal / Regular Expression(Korean))
 
 ## Process
 
@@ -27,7 +26,7 @@ Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + Rea
 
 ## Search(상훈담당자)
 
-- [ ] 이름, 훈격, 소속, 사유, 수여일자(period로 설정), 훈격으로 검사
+- [x] 이름, 훈격, 소속, 사유, 수여일자(period로 설정), 훈격으로 검사
 
 ## Search(일반 담당자)
 
@@ -35,5 +34,4 @@ Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + Rea
 
 ## Idea
 
-- [ ] prizeCategory: 앞으로는 여기에 행사 이름을 적도록 한다. // 추후
 - [ ] 포상번호: 프론트에서 바로 직전 포상번호 value를 가져와서 +1을 해주고 백엔드로 보내준다.
