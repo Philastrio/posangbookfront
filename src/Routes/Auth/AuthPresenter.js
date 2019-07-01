@@ -3,14 +3,28 @@ import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { Helmet } from "react-helmet";
+import EmailInput from "../../Components/EmailInput";
 
 const Wrapper = styled.div`
-  height: 700px;
+  height: 90vh;
   display: flex;
   align-items: center;
-
   justify-content: center;
   flex-direction: column;
+`;
+
+const MiniWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const TransparentBox = styled.div`
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
 `;
 
 const Box = styled.div`
@@ -53,6 +67,7 @@ const Form = styled(Box)`
     }
   }
 `;
+// ...email 이라고 하면 email로 들어온 값을 모두 다시 복사해서 넣는다느 의미이다. 즉 email={email}과 같다.
 
 export default ({
   setAction,
@@ -61,9 +76,8 @@ export default ({
   email,
   position,
   belongTo,
-  Rank,
-  secret,
-  onSubmit
+  onSubmit,
+  secret
 }) => (
   <Wrapper>
     <Form>
@@ -73,7 +87,7 @@ export default ({
             <title>로그인 | 청양군 포상록</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder={"이메일(@korea.kr)"} {...email} type={email} />
+            <Input placeholder={"이메일"} {...email} />
             <Button text={"로그인"} />
           </form>
         </>
@@ -84,12 +98,34 @@ export default ({
             <title>로그인 | 청양군 포상록</title>
           </Helmet>
           <form onSubmit={onSubmit}>
-            <Input placeholder={"이름"} />
-            <Input placeholder={"이메일(@korea.kr)"} />
-            <Input placeholder={"직위"} />
-            <Input placeholder={"소속"} />
-            <Input placeholder={"직위"} />
+            <Input placeholder={"이름"} {...userName} />
+            <MiniWrapper>
+              <EmailInput
+                placeholder={"이메일"}
+                email={() => email.concat("@naver.com")}
+              />
+              <TransparentBox>
+                <h2>@korea.kr</h2>
+              </TransparentBox>
+            </MiniWrapper>
+            <Input placeholder={"직위"} {...position} />
+            <Input placeholder={"소속"} {...belongTo} />
             <Button text={"가  입"} />
+          </form>
+        </>
+      )}
+      {action === "confirm" && (
+        <>
+          <Helmet>
+            <title>암호확인 | 청양군 포상록</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input
+              placeholder={"이메일로 전송된 암호를 붙여넣어주세요"}
+              required
+              {...secret}
+            />
+            <Button text={"확 인"} />
           </form>
         </>
       )}

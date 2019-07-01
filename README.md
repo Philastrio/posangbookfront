@@ -2,6 +2,10 @@
 
 Building Analog PosangBook into Digital Webpage with Graphql-Yoga + Prisma + React and ReactNative
 
+# 주의
+
+JWT 인증방식 세션 서버 저장으로 바꾸기 // JWT 구현 미흡함 (추후 보완예정 / 2019.7.1.)
+
 ## Frontend
 
 - [x] index.js
