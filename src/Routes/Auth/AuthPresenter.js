@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { Helmet } from "react-helmet";
-import EmailInput from "../../Components/EmailInput";
 
 const Wrapper = styled.div`
   height: 90vh;
@@ -99,15 +98,16 @@ export default ({
           </Helmet>
           <form onSubmit={onSubmit}>
             <Input placeholder={"이름"} {...userName} />
-            <MiniWrapper>
+            {/* <MiniWrapper>
               <EmailInput
                 placeholder={"이메일"}
-                email={() => email.concat("@naver.com")}
+                email={email => email.concat("@gmail.com")}
               />
               <TransparentBox>
                 <h2>@korea.kr</h2>
-              </TransparentBox>
-            </MiniWrapper>
+              </TransparentBox> 
+              </MiniWrapper>*/}
+            <Input placeholder={"이메일"} {...email} type={email} />
             <Input placeholder={"직위"} {...position} />
             <Input placeholder={"소속"} {...belongTo} />
             <Button text={"가  입"} />
