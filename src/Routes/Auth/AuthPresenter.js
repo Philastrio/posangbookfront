@@ -98,15 +98,7 @@ export default ({
           </Helmet>
           <form onSubmit={onSubmit}>
             <Input placeholder={"이름"} {...userName} />
-            {/* <MiniWrapper>
-              <EmailInput
-                placeholder={"이메일"}
-                email={email => email.concat("@gmail.com")}
-              />
-              <TransparentBox>
-                <h2>@korea.kr</h2>
-              </TransparentBox> 
-              </MiniWrapper>*/}
+
             <Input placeholder={"이메일"} {...email} type={email} />
             <Input placeholder={"직위"} {...position} />
             <Input placeholder={"소속"} {...belongTo} />
