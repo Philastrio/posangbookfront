@@ -93,7 +93,8 @@ export default withRouter(({ history }) => {
           </form>
         </HeaderColumn>
         <HeaderColumn>
-          <HeaderLink to="/Auth">가입</HeaderLink>
+          <HeaderLink to="/Auth">포상록 작성</HeaderLink>
+          <HeaderLink to="/">로그아웃</HeaderLink>
         </HeaderColumn>
       </HeaderWrapper>
     </Header>
