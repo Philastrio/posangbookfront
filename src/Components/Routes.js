@@ -10,7 +10,7 @@ import Search from "../Routes/Search";
 
 const LoggedInRoutes = () => (
   <Switch>
-    <Route exact path="/" component={SearchResult} />
+    <Route exact path="/" component={Search} />
     <Route path="/SearchPost" component={SearchPost} />
     <Route path="/EditPost" component={EditPost} />
     <Route path="/AllPost" component={AllPost} />

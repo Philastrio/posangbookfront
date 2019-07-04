@@ -14,7 +14,7 @@ const SearchPresenter = ({ term, loading, data }) => {
   if (!term) {
     return (
       <Wrapper>
-        <FatText text="Search for something" />
+        <FatText text="검색어를 입력해주세요" />
       </Wrapper>
     );
   }
