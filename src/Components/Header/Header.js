@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import Input from "./Input";
-import useInput from "../Hooks/useInput";
+import Input from "../Input";
+import useInput from "../../Hooks/useInput";
+import { LOG_OUT } from "./HeaderQueries";
+import { useMutation } from "react-apollo-hooks";
 
 const Header = styled.header`
   width: 100%;
@@ -47,15 +49,6 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const Box = styled.div`
-  display: flex;
-  border: 0px;
-  border-radius: 0px;
-  width: 100%;
-  justify-content: space-evenly;
-  flex-direction: row;
-`;
-
 const SearchInput = styled(Input)`
   background-color: ${props => props.theme.bgColor};
   padding: 5px;
@@ -76,6 +69,7 @@ export default withRouter(({ history }) => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`); //모든 검색(search)로 간다. 여기서 로그인됐으면 모든 검색/로그아웃이면 일반검색?
   };
+  const logOut = useMutation(LOG_OUT);
 
   return (
     <Header>
@@ -94,7 +88,7 @@ export default withRouter(({ history }) => {
         </HeaderColumn>
         <HeaderColumn>
           <HeaderLink to="/Auth">포상록 작성</HeaderLink>
-          <HeaderLink to="/">로그아웃</HeaderLink>
+          <HeaderLink onClick={logOut}>로그아웃</HeaderLink>
         </HeaderColumn>
       </HeaderWrapper>
     </Header>
