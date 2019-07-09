@@ -4,7 +4,9 @@ import { Link, withRouter } from "react-router-dom";
 import Input from "../Input";
 import useInput from "../../Hooks/useInput";
 import { LOG_OUT } from "./HeaderQueries";
-import { useMutation } from "react-apollo-hooks";
+import { useMutation, useQuery } from "react-apollo-hooks";
+import { ME } from "../../sharedQueries";
+import FatText from "../FatText";
 
 const Header = styled.header`
   width: 100%;
@@ -32,10 +34,14 @@ const HeaderWrapper = styled.div`
 
 const HeaderColumn = styled.div`
   width: 33%;
+  display: flex;
   text-align: center;
+
+  justify-content: space-around;
+  align-items: center;
+
   &:first-child {
-    margin-right: auto;
-    text-align: left;
+    justify-content: start;
   }
   &:last-child {
     margin-left: auto;
@@ -56,10 +62,16 @@ const SearchInput = styled(Input)`
   height: auto;
   border-radius: 3px;
   text-align: center;
-  width: 90%;
+  width: 100%;
   &::placeholder {
     opacity: 0.8;
     font-weight: 200;
+  }
+`;
+
+const UserName = styled.span`
+  &:not(:last-child) {
+    margin-right: 30px;
   }
 `;
 
@@ -70,27 +82,33 @@ export default withRouter(({ history }) => {
     history.push(`/search?term=${search.value}`); //모든 검색(search)로 간다. 여기서 로그인됐으면 모든 검색/로그아웃이면 일반검색?
   };
   const logOut = useMutation(LOG_OUT);
+  const { data } = useQuery(ME);
 
   return (
     <Header>
-      <HeaderWrapper>
-        <HeaderColumn>
-          <Link to="/">청양군 포상록</Link>
-        </HeaderColumn>
-        <HeaderColumn>
-          <form onSubmit={onSearchSubmit}>
-            <SearchInput
-              value={search.value}
-              onChange={search.onChange}
-              placeholder="검 색"
-            />
-          </form>
-        </HeaderColumn>
-        <HeaderColumn>
-          <HeaderLink to="/Auth">포상록 작성</HeaderLink>
-          <HeaderLink onClick={logOut}>로그아웃</HeaderLink>
-        </HeaderColumn>
-      </HeaderWrapper>
+      {data.me ? (
+        <HeaderWrapper>
+          <HeaderColumn>
+            <Link to="/">청양군 포상록</Link>
+          </HeaderColumn>
+          <HeaderColumn>
+            <form onSubmit={onSearchSubmit}>
+              <SearchInput
+                value={search.value}
+                onChange={search.onChange}
+                placeholder="검 색"
+              />
+            </form>
+          </HeaderColumn>
+          <HeaderColumn>
+            <UserName>{data.me.userName} 님</UserName>
+            <HeaderLink to="/Auth">포상록 작성</HeaderLink>
+            <HeaderLink onClick={logOut}>로그아웃</HeaderLink>
+          </HeaderColumn>
+        </HeaderWrapper>
+      ) : (
+        "Error"
+      )}
     </Header>
   );
 });

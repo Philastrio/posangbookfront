@@ -7,10 +7,11 @@ import SearchPost from "../Routes/SearchPost";
 import AllPost from "../Routes/AllPost";
 import SearchResult from "../Routes/SearchResult";
 import Search from "../Routes/Search";
+import Main from "../Routes/Main";
 
 const LoggedInRoutes = () => (
   <Switch>
-    <Route exact path="/" component={Search} />
+    <Route exact path="/" component={Main} />
     <Route path="/SearchPost" component={SearchPost} />
     <Route path="/EditPost" component={EditPost} />
     <Route path="/AllPost" component={AllPost} />
