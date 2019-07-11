@@ -7,6 +7,7 @@ import { LOG_OUT } from "./HeaderQueries";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import { ME } from "../../sharedQueries";
 import FatText from "../FatText";
+import ErrorView from "../Error";
 
 const Header = styled.header`
   width: 100%;
@@ -107,7 +108,7 @@ export default withRouter(({ history }) => {
           </HeaderColumn>
         </HeaderWrapper>
       ) : (
-        "Error"
+        <ErrorView text={"비정상적인 접근입니다"}> </ErrorView>
       )}
     </Header>
   );
