@@ -5,7 +5,6 @@ import React from "react";
 import EditPost from "../Routes/EditPost";
 import SearchPost from "../Routes/SearchPost";
 import AllPost from "../Routes/AllPost";
-import SearchResult from "../Routes/SearchResult";
 import Search from "../Routes/Search";
 import Main from "../Routes/Main";
 

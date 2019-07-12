@@ -12,20 +12,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const MiniWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const TransparentBox = styled.div`
-  border: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
-`;
-
 const Box = styled.div`
   ${props => props.theme.whiteBox}
   border-radius: 0px;
@@ -98,7 +84,6 @@ export default ({
           </Helmet>
           <form onSubmit={onSubmit}>
             <Input placeholder={"이름"} {...userName} />
-
             <Input placeholder={"이메일"} {...email} type={email} />
             <Input placeholder={"직위"} {...position} />
             <Input placeholder={"소속"} {...belongTo} />

@@ -8,7 +8,7 @@ import { HashRouter as Router } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
 import styled from "styled-components";
 import Footer from "./Footer";
-import Header from "../Components/Header/Header";
+import Header from "./Header";
 
 const QUERY = gql`
   {

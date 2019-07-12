@@ -5,9 +5,10 @@ import PropTypes from "prop-types";
 const Error = styled.div`
   display: flex;
   flex-direction: column;
-  align-content: center;
   text-align: center;
+  justify-content: center;
   max-height: ${props => props.theme.minHeight};
+  color: red;
 `;
 
 const ErrorView = ({ text, className }) => (

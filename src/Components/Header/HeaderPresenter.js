@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from "../Input";
-import useInput from "../../Hooks/useInput";
-import { LOG_OUT } from "./HeaderQueries";
-import { useMutation, useQuery } from "react-apollo-hooks";
-import { ME } from "../../sharedQueries";
-import FatText from "../FatText";
 import ErrorView from "../Error";
+import Loader from "../Loader";
+import PropTypes from "prop-types";
+
+const Wrapper = styled.div`
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const Header = styled.header`
   width: 100%;
@@ -18,7 +23,6 @@ const Header = styled.header`
   border-radius: 0px;
   margin-bottom: 60px;
   margin: 0 auto; /* 이걸 넣어야 가운데에 있게 된다*/
-
   display: flex;
   justify-items: center;
   align-items: center;
@@ -76,18 +80,16 @@ const UserName = styled.span`
   }
 `;
 
-export default withRouter(({ history }) => {
-  const search = useInput("");
-  const onSearchSubmit = e => {
-    e.preventDefault();
-    history.push(`/search?term=${search.value}`); //모든 검색(search)로 간다. 여기서 로그인됐으면 모든 검색/로그아웃이면 일반검색?
-  };
-  const logOut = useMutation(LOG_OUT);
-  const { data } = useQuery(ME);
+const isLoader = ({ loading }) => {
+  if (loading) {
+    return <Loader />;
+  }
+};
 
-  return (
-    <Header>
-      {data.me ? (
+const isData = ({ search, data: { ...me }, logOut, onSearchSubmit }) => {
+  if (me !== undefined) {
+    return (
+      <Header>
         <HeaderWrapper>
           <HeaderColumn>
             <Link to="/">청양군 포상록</Link>
@@ -102,14 +104,51 @@ export default withRouter(({ history }) => {
             </form>
           </HeaderColumn>
           <HeaderColumn>
-            <UserName>{data.me.userName} 님</UserName>
+            <UserName>{me.userName} 님</UserName>
             <HeaderLink to="/Auth">포상록 작성</HeaderLink>
             <HeaderLink onClick={logOut}>로그아웃</HeaderLink>
           </HeaderColumn>
         </HeaderWrapper>
-      ) : (
-        <ErrorView text={"비정상적인 접근입니다"}> </ErrorView>
-      )}
-    </Header>
-  );
-});
+      </Header>
+    );
+  }
+};
+
+const isNotData = ({ data: { me } }) => {
+  if (me === undefined) {
+    return (
+      <HeaderWrapper>
+        <ErrorView text={"비정상적인 접근입니다"} />
+      </HeaderWrapper>
+    );
+  }
+};
+
+const HeaderPresenter = async ({
+  loading,
+  search,
+  data: { me },
+  logOut,
+  onSearchSubmit
+}) => {
+  console.log(me);
+  await isLoader(loading);
+  isData(search, me, logOut, onSearchSubmit);
+  isNotData(me);
+};
+
+isLoader.propTypes = {
+  isLoading: PropTypes.bool.isRequired
+};
+
+isData.propTypes = {
+  search: PropTypes.objectOf(),
+  me: PropTypes.object,
+  logOut: PropTypes.bool,
+  onSearchSubmit: PropTypes.func,
+  SearchInput: PropTypes.objectOf(PropTypes.object)
+};
+
+isNotData.propTypes = { me: PropTypes.object };
+
+export default HeaderPresenter;
