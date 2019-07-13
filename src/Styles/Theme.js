@@ -15,6 +15,7 @@ export default {
   fontSize: "15px",
   authMinHeight: "calc(100vh - 50px)",
   minHeight: "calc(85vh - 50px)",
+  loaderHeight: "calc(85vh)",
   whiteBox: `border:${BOX_BORDER};
              border-radius:${BORDER_RADIUS};
              background-color:white;

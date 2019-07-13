@@ -107,18 +107,20 @@ export default ({
         </>
       )}
     </Form>
-    <StateChager>
-      {action === "logIn" ? (
-        <>
-          계정이 없으신가요?{" "}
-          <Link onClick={() => setAction("signUp")}>가입하기</Link>
-        </>
-      ) : (
-        <>
-          계정이 있으신가요?{" "}
-          <Link onClick={() => setAction("logIn")}>로그인</Link>
-        </>
-      )}
-    </StateChager>
+    {action !== "confirm" && (
+      <StateChager>
+        {action === "logIn" ? (
+          <>
+            계정이 없으신가요?{" "}
+            <Link onClick={() => setAction("signUp")}>가입하기</Link>
+          </>
+        ) : (
+          <>
+            계정이 있으신가요?{" "}
+            <Link onClick={() => setAction("logIn")}>로그인</Link>
+          </>
+        )}
+      </StateChager>
+    )}
   </Wrapper>
 );

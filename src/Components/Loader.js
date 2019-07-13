@@ -15,13 +15,12 @@ const Animation = keyframes`
 `;
 
 const Loader = styled.div`
-  min-height: ${props => props.theme.minHeight};
+  height: ${props => props.theme.loaderHeight};
   animation: ${Animation} 1s linear infinite;
-
   width: 100%;
-  position: absolute;
-  top: 40%;
-  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default () => (

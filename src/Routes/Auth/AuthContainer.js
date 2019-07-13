@@ -17,7 +17,6 @@ export default () => {
   const email = useInput("");
   const position = useInput("");
   const belongTo = useInput("");
-  const Rank = useInput("");
   const secret = useInput("");
 
   const requestSecretMutation = useMutation(LOG_IN, {

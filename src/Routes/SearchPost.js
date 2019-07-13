@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 const Wrapper = styled.div`
   min-height: calc(85vh - 50px);
